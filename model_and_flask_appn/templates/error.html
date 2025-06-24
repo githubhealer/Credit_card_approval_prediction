@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+    {% if error == """could not convert string to float: ''""" %}
+        <h1>Fill values in the blank</h1>
+    {% elif error %}
+        <h1>Error: {{ error }}</h1>
+    {% else %}
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prediction Form</title>
+
+  <!-- Bootstrap 4 CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .info-icon {
+      cursor: pointer;
+      border-bottom: 1px dotted #17a2b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4 text-center">Prediction Form</h2>
+
+    <form action="/predict" method="POST" class="needs-validation" novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="CODE_GENDER">Gender</label>
+          <select class="form-control" id="CODE_GENDER" name="CODE_GENDER" required>
+            <option value="">Select Gender</option>
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="FLAG_OWN_CAR">Own Car</label>
+          <select class="form-control" id="FLAG_OWN_CAR" name="FLAG_OWN_CAR" required>
+            <option value="">Yes/No</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="FLAG_OWN_REALTY">Own Realty</label>
+          <select class="form-control" id="FLAG_OWN_REALTY" name="FLAG_OWN_REALTY" required>
+            <option value="">Yes/No</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="AMT_INCOME_TOTAL">Annual Income</label>
+          <input type="number" class="form-control" id="AMT_INCOME_TOTAL" name="AMT_INCOME_TOTAL" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="NAME_INCOME_TYPE">Income Type</label>
+          <select class="form-control" id="NAME_INCOME_TYPE" name="NAME_INCOME_TYPE" required>
+            <option value="">Select</option>
+            <option value="0">Pensioner</option>
+            <option value="1">Student</option>
+            <option value="2">Working</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="NAME_EDUCATION_TYPE">Education</label>
+          <select class="form-control" id="NAME_EDUCATION_TYPE" name="NAME_EDUCATION_TYPE" required>
+            <option value="">Select</option>
+            <option value="0">Academic Degree</option>
+            <option value="1">Higher Education</option>
+            <option value="2">Secondary</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="NAME_FAMILY_STATUS">Family Status</label>
+          <select class="form-control" id="NAME_FAMILY_STATUS" name="NAME_FAMILY_STATUS" required>
+            <option value="">Select</option>
+            <option value="0">Married</option>
+            <option value="1">Single</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="NAME_HOUSING_TYPE">Housing Type</label>
+          <select class="form-control" id="NAME_HOUSING_TYPE" name="NAME_HOUSING_TYPE" required>
+            <option value="">Select</option>
+            <option value="0">House / Apartment</option>
+            <option value="1">With Parents</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="DAYS_BIRTH">
+            Age (in years)
+            <span data-toggle="tooltip" title="Enter your current age in years.">
+              <i class="info-icon text-info">?</i>
+            </span>
+          </label>
+          <input type="text" pattern="\d+(\.\d+)?" class="form-control" id="DAYS_BIRTH" name="DAYS_BIRTH" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="DAYS_EMPLOYED">
+            Employment Duration (in years)
+            <span data-toggle="tooltip" title="Enter negative if employed, positive if not.">
+              <i class="info-icon text-info">Instructions</i>
+            </span>
+          </label>
+          <input type="text" pattern="-?\d+(\.\d+)?" class="form-control" id="DAYS_EMPLOYED" name="DAYS_EMPLOYED" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="CNT_FAM_MEMBERS">Family Members</label>
+          <input type="number" class="form-control" id="CNT_FAM_MEMBERS" name="CNT_FAM_MEMBERS" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="paid_off">EMI Paid Off</label>
+          <input type="number" class="form-control" id="paid_off" name="paid_off" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="pastdues">EMI of Past Dues</label>
+          <input type="number" class="form-control" id="pastdues" name="pastdues" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="no_loan">Number of No-Loan Months</label>
+          <input type="number" class="form-control" id="no_loan" name="no_loan" required>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block mt-4" type="submit">Predict</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap 4 JS and Popper.js for tooltip -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+</body>
+</html>
